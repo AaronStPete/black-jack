@@ -21,6 +21,7 @@ const testClick = () => {
   console.log("this button is working")
   console.log("player1.name = " + player1.name);
   console.log("player1's hand is: " + player1.hand);
+  console.log("the available cards are " + availableCards)
 }
 
 const player1 = {
@@ -28,7 +29,7 @@ const player1 = {
   hand: []
 }
 
-const cardDeck = {
+const card = {
   key: "",
   value: "",
   suit: "",
@@ -43,6 +44,8 @@ console.log("The deck has been reshuffled")
 let availableCards = [];
 
 draw = () => {
+  //using card.key => Math.ceil((Math.random()*53));
+  // => check if available, if not re-draw
   //add available card to player1.hand
 }
   
@@ -53,19 +56,26 @@ const dealNewHand = () => {
   //stay or hit?
 }
   
-  //create a deck
-  // const deck 
-  // = Math.ceil((Math.random()*53));
-  //#'s 1-13 spades
-  //#'s 14-26 hearts
-  //#'s 27-39 diamonds
-  //#'s 40-52 clubs
-  //card values
-  //(1-9)*4
-  //(10,jack,queen,king)*4
-  //(aces)*4 (basevalue=11)
-  //(ace) (basevalue=11 or 1) (low)
-  // [deck > [card] > [key, value, suit, playedThisRound]] - unavailable cards
+/////create a deck
+// deck = (card>[key, value, suit, playedThisRound] - unavailable cards)
+const cardDeck = [];
+const generateCardDeck = () => {
+  for  (let i = 0; i < 52; i++) {
+    card.key = i;
+    console.log("Card.key = " + card.key)
+    card.value = 
+  }
+}
+  //value = Math.ceil((Math.random()*53)%13);
+    //#'s 1-13 spades
+    //#'s 14-26 hearts
+    //#'s 27-39 diamonds
+    //#'s 40-52 clubs
+    //card values
+    //(1-9)*4
+    //(10,jack,queen,king)*4
+    //(aces)*4 (basevalue=11)
+    //(ace) (basevalue=11 or 1) (low)
   //how to hit()
   // if hit => addAvailableCard()
   //check if bust
