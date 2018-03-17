@@ -57,16 +57,25 @@ const dealNewHand = () => {
 }
   
 /////create a deck
-// deck = (card>[key, value, suit, playedThisRound] - unavailable cards)
+// deck = (card>[key, value, suit, ])
 const cardDeck = [];
 const generateCardDeck = () => {
+  ////generateCard()
   for  (let i = 0; i < 52; i++) {
     card.key = i;
+    // newCard = [card.key, ]
     console.log("Card.key = " + card.key)
-    card.value = 
+    keyValue = (card.key)%13 //what about 10 => 
+    if (keyValue >= 10) {
+      card.value = 10
+    } else {
+      card.value = 
+    }
+    ///generate a suit using if
+    deck.push(card);
   }
 }
-  //value = Math.ceil((Math.random()*53)%13);
+  //value = ((card.key)%13);
     //#'s 1-13 spades
     //#'s 14-26 hearts
     //#'s 27-39 diamonds
