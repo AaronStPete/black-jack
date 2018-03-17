@@ -31,6 +31,7 @@ const player1 = {
 
 const card = {
   key: "",
+  name: "",
   value: "",
   suit: "",
 }
@@ -60,19 +61,33 @@ const dealNewHand = () => {
 // deck = (card>[key, value, suit, ])
 const cardDeck = [];
 const generateCardDeck = () => {
-  ////generateCard()
-  for  (let i = 0; i < 52; i++) {
-    card.key = i;
-    // newCard = [card.key, ]
-    console.log("Card.key = " + card.key)
-    keyValue = (card.key)%13 //what about 10 => 
-    if (keyValue >= 10) {
-      card.value = 10
-    } else {
-      card.value = 
+  const cardName = ["ace","2","3","4","5","6","7","8","9","10","jack","queen","king"]
+  const suits = ["spades","hearts","diamonds","clubs"];
+  console.log(suits)
+  console.log(cardName);
+  count = 0;
+  ///this loop builds a card and then pushes it into the cardDeck
+  for  (let i = 0; i < cardName.length; i++) {
+    for (let j = 0; j < suits.length; j++) {
+      card.name = cardName[i] + " of " + suits[j];
+      console.log("this card is named: " + card.name);
+      count++
+      card.key = count;
+      console.log("this card's key is: " + card.key);
+      card.suit = suits[j];
+      console.log("this card's suit is: " + card.suit);
+      ///this generates the new card's value
+      if (cardName[i].includes("jack") || cardName[i].includes("queen") || cardName[i].includes("king")) {
+        card.value = 10;
+      } else if (cardName[i].includes("ace")) {
+        card.value = 11;
+      } else {
+        card.value = parseInt(cardName[i])
+      };
+      console.log("this card's value is: " + card.value)
+      ///this pushes the new card into the card deck
+      cardDeck.push(card);
     }
-    ///generate a suit using if
-    deck.push(card);
   }
 }
   //value = ((card.key)%13);
