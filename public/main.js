@@ -29,16 +29,9 @@ const player1 = {
   hand: []
 }
 
-const card = {
-  key: "",
-  name: "",
-  value: "",
-  suit: "",
-}
-
 const shuffleDeck = () => {
   // this function takes cardDeck and places it into available cards
-availableCards = cardDeck
+  availableCards = cardDeck
 console.log("The deck has been reshuffled")
 }
 
@@ -49,20 +42,25 @@ draw = () => {
   // => check if available, if not re-draw
   //add available card to player1.hand
 }
-  
+
 //new hand reset
 const dealNewHand = () => {
   draw()
   draw()
   //stay or hit?
 }
-  
+
 /////create a deck
-// deck = (card>[key, value, suit, ])
-const cardDeck = [];
+let cardDeck = [];
 const generateCardDeck = () => {
   const cardName = ["ace","2","3","4","5","6","7","8","9","10","jack","queen","king"]
   const suits = ["spades","hearts","diamonds","clubs"];
+  const card = {
+    key: "",
+    name: "",
+    value: "",
+    suit: "",
+  }
   console.log(suits)
   console.log(cardName);
   count = 0;
@@ -76,6 +74,7 @@ const generateCardDeck = () => {
       console.log("this card's key is: " + card.key);
       card.suit = suits[j];
       console.log("this card's suit is: " + card.suit);
+      
       ///this generates the new card's value
       if (cardName[i].includes("jack") || cardName[i].includes("queen") || cardName[i].includes("king")) {
         card.value = 10;
@@ -85,15 +84,19 @@ const generateCardDeck = () => {
         card.value = parseInt(cardName[i])
       };
       console.log("this card's value is: " + card.value)
+      
+      // newCard = card;
       ///this pushes the new card into the card deck
-      cardDeck.push(card);
+      // cardDeck.push(newCard);
+      cardDeck.push([card.name, card.key, card.suit, card.value])
+      console.log(cardDeck);
     }
   }
 }
-  //value = ((card.key)%13);
-    //#'s 1-13 spades
-    //#'s 14-26 hearts
-    //#'s 27-39 diamonds
+//value = ((card.key)%13);
+//#'s 1-13 spades
+//#'s 14-26 hearts
+//#'s 27-39 diamonds
     //#'s 40-52 clubs
     //card values
     //(1-9)*4
