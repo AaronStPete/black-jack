@@ -88,37 +88,27 @@ const shuffleDeck = () => {
   console.log(availableCards)
 }
 
-//////////////////INCOMPLETE LOGIC/////////////
+// Mark:
+// 1: generate a random number to pick an array in availableCards;
+// 2: take that card from availiable cards, and put into player hand
+// 3: remove that card from availableCards
 
-///draw() isn't done
-draw = () => {
-  for (i=0; i <= 51; i++) {
-  //pick a random number between 1-52
-  randNum = Math.ceil((Math.random()*53));
-  // console.log("the random number generated is: " + randNum)
-  console.log("testing card: " + cardDeck.indexOf(0, randNum))
-  //using indexOf the random number, => (check if availableCards[].includes(cardDeck.indexOf(randNum))
-  if (availableCards.includes(cardDeck.indexOf(randNum))) {
-    // => check if the card is available, if not re-draw
-    ////(is available) => add available card to player1.hand
-    (player1.hand).push(cardDeck.indexOf(randNum));
-    console.log("dealer added " + newCard + "to player 1's hand")
-    console.log("Player1's hand contains: " + player1.hand)
-    ////remove card from availableCards[]
-    availableCards.splice(randNum);
-    console.log("removing card: " + cardDeck.indexOf(randNum))
-    break;
-    }
-  }
+const draw = () => {
+  const nextCard = getRandomInt(availableDeck.length);
+  player.hand.push(availableDeck[nextCard]);
+  availableDeck.splice(nextCard, 1);
 }
+
 
 //new hand reset
 const dealNewHand = () => {
   draw()
   draw()
-  //stay or hit? break these up into seperate functions?
 }
 
+//////////////////INCOMPLETE LOGIC/////////////
+//stay or hit? break these up into seperate functions? 
+//doing this with buttons
 
 //how to hit()
 // if hit => addAvailableCard()
