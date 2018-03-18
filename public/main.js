@@ -1,3 +1,13 @@
+// variable storage:
+const player1 = {
+  name: "",
+  hand: []
+}
+
+let cardDeck = [];
+
+let availableCards = [];
+
 //create environment logic
 
 //creating a player
@@ -24,56 +34,30 @@ const testClick = () => {
   console.log("the available cards are " + availableCards)
 }
 
-const player1 = {
-  name: "",
-  hand: []
-}
-
-const shuffleDeck = () => {
-  // this function takes cardDeck and places it into available cards
-  availableCards = cardDeck
-console.log("The deck has been reshuffled")
-}
-
-let availableCards = [];
-
-draw = () => {
-  //using card.key => Math.ceil((Math.random()*53));
-  // => check if available, if not re-draw
-  //add available card to player1.hand
-}
-
-//new hand reset
-const dealNewHand = () => {
-  draw()
-  draw()
-  //stay or hit?
-}
 
 /////create a deck
-let cardDeck = [];
 const generateCardDeck = () => {
   const cardName = ["ace","2","3","4","5","6","7","8","9","10","jack","queen","king"]
   const suits = ["spades","hearts","diamonds","clubs"];
   const card = {
     key: "",
     name: "",
-    value: "",
     suit: "",
+    value: "",
   }
-  console.log(suits)
-  console.log(cardName);
+  // console.log(suits)
+  // console.log(cardName);
   count = 0;
   ///this loop builds a card and then pushes it into the cardDeck
   for  (let i = 0; i < cardName.length; i++) {
     for (let j = 0; j < suits.length; j++) {
       card.name = cardName[i] + " of " + suits[j];
-      console.log("this card is named: " + card.name);
+      // console.log("this card is named: " + card.name);
       count++
       card.key = count;
-      console.log("this card's key is: " + card.key);
+      // console.log("this card's key is: " + card.key);
       card.suit = suits[j];
-      console.log("this card's suit is: " + card.suit);
+      // console.log("this card's suit is: " + card.suit);
       
       ///this generates the new card's value
       if (cardName[i].includes("jack") || cardName[i].includes("queen") || cardName[i].includes("king")) {
@@ -83,38 +67,72 @@ const generateCardDeck = () => {
       } else {
         card.value = parseInt(cardName[i])
       };
-      console.log("this card's value is: " + card.value)
+      // console.log("this card's value is: " + card.value)
       
       // newCard = card;
       ///this pushes the new card into the card deck
       // cardDeck.push(newCard);
-      cardDeck.push([card.name, card.key, card.suit, card.value])
+      cardDeck.push([card.key, card.name, card.suit, card.value])
       console.log(cardDeck);
     }
   }
+  shuffleDeck();
 }
-//value = ((card.key)%13);
-//#'s 1-13 spades
-//#'s 14-26 hearts
-//#'s 27-39 diamonds
-    //#'s 40-52 clubs
-    //card values
-    //(1-9)*4
-    //(10,jack,queen,king)*4
-    //(aces)*4 (basevalue=11)
-    //(ace) (basevalue=11 or 1) (low)
-  //how to hit()
-  // if hit => addAvailableCard()
-  //check if bust
-  // if hand > 21 => lose()
-  // win()
-  // log win in game history
-  // celebrate announcement
-  
-  
-  // house logic
-  
-  
+
+
+//////////////////INCOMPLETE LOGIC/////////////
+//// struggling to return child arrays
+const shuffleDeck = () => {
+  // this function takes cardDeck and places it into available cards
+  availableCards.push([cardDeck])
+  console.log("The deck has been reshuffled")
+  console.log("the deck contains: " + availableCards)
+  ////expecting an array with children arrays like what you get with console.log(cardDeck)
+}
+
+///draw() isn't done
+draw = () => {
+  for (i=0; i <= 51; i++) {
+  //pick a random number between 1-52
+  randNum = Math.ceil((Math.random()*53));
+  // console.log("the random number generated is: " + randNum)
+  console.log("testing card: " + cardDeck.indexOf(0, randNum))
+  //using indexOf the random number, => (check if availableCards[].includes(cardDeck.indexOf(randNum))
+  if (availableCards.includes(cardDeck.indexOf(randNum))) {
+    // => check if the card is available, if not re-draw
+    ////(is available) => add available card to player1.hand
+    (player1.hand).push(cardDeck.indexOf(randNum));
+    console.log("dealer added " + newCard + "to player 1's hand")
+    console.log("Player1's hand contains: " + player1.hand)
+    ////remove card from availableCards[]
+    availableCards.splice(randNum);
+    console.log("removing card: " + cardDeck.indexOf(randNum))
+    break;
+    }
+  }
+}
+
+//new hand reset
+const dealNewHand = () => {
+  draw()
+  draw()
+  //stay or hit? break these up into seperate functions?
+}
+
+
+//how to hit()
+// if hit => addAvailableCard()
+//check if bust
+// if hand > 21 => lose()
+// win()
+// log win in game history
+// celebrate announcement
+
+
+// house logic
+
+//(ace) (basevalue=11 or 1) (low)
+
 ///////pick # of players (low)
 // create a player object
 // function player(name, hand,) {
