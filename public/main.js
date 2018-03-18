@@ -73,7 +73,7 @@ const generateCardDeck = () => {
       ///this pushes the new card into the card deck
       // cardDeck.push(newCard);
       cardDeck.push([card.key, card.name, card.suit, card.value])
-      console.log(cardDeck);
+      // console.log(cardDeck);
     }
   }
   shuffleDeck();
@@ -84,7 +84,7 @@ const shuffleDeck = () => {
   /// previously had (availableCards = cardDeck) but it seems to concatenate instead of adding an array
   availableCards = cardDeck.slice();
   console.log("The deck has been reshuffled")
-  console.log("the deck contains: ")
+  // console.log("the deck contains: ")
   console.log(availableCards)
 }
 
@@ -93,12 +93,24 @@ const shuffleDeck = () => {
 // 2: take that card from availiable cards, and put into player hand
 // 3: remove that card from availableCards
 
+function getRandomCard() { 
+  return Math.ceil(Math.random())
+}
+///I think there's a potential bug if nextCard is > availableCards.length
 const draw = () => {
-  const nextCard = getRandomInt(availableDeck.length);
-  player.hand.push(availableDeck[nextCard]);
-  availableDeck.splice(nextCard, 1);
+  const nextCard = getRandomCard(availableCards.length);
+  // console.log("nextCard is:" + nextCard)
+  player1.hand.push(availableCards[nextCard]);
+  console.log("This is player1.hand")
+  console.log(player1.hand)
+  console.log("This is the availableDeck:")
+  availableCards.splice(nextCard, 1);
+  console.log("This is availableDeck")
+  console.log(availableCards)
 }
 
+///add function for displaying player1.hand to DOM
+////let playerName = document.querySelector("")
 
 //new hand reset
 const dealNewHand = () => {
@@ -107,11 +119,13 @@ const dealNewHand = () => {
 }
 
 //////////////////INCOMPLETE LOGIC/////////////
+
+// need to findScore()
+
 //stay or hit? break these up into seperate functions? 
 //doing this with buttons
 
-//how to hit()
-// if hit => addAvailableCard()
+//hit with draw
 //check if bust
 // if hand > 21 => lose()
 // win()
