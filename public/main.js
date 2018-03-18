@@ -84,7 +84,8 @@ const generateCardDeck = () => {
 //// struggling to return child arrays
 const shuffleDeck = () => {
   // this function takes cardDeck and places it into available cards
-  availableCards.push([cardDeck])
+  /// previously had (availableCards = cardDeck) but it seems to concatenate instead of adding an array
+  availableCards.apply([cardDeck])
   console.log("The deck has been reshuffled")
   console.log("the deck contains: " + availableCards)
   ////expecting an array with children arrays like what you get with console.log(cardDeck)
