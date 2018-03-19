@@ -29,7 +29,7 @@ const buildDeck = () => {
         unshuffledDeck.push(card);
         }
     }
-    console.log(unshuffledDeck)
+    // console.log(unshuffledDeck)
 }
 
 ////shuffle the unshuffledDeck into a new array
@@ -49,6 +49,7 @@ const shuffleDeck = () => {
 const draw = (who) => {
     const nextCard = (getRandNum(shuffledDeck.length));
     who.hand.push(shuffledDeck[nextCard]);
+    console.log(who, " drew ",(shuffledDeck[nextCard]))
     shuffledDeck.splice(nextCard, 1);
 }
 
@@ -57,12 +58,44 @@ const dealNewHand = (input) => {
     draw(input)
   }
 
-////gameStart button logic
+const displayPlayerHand = (who) => {
+    const whoHand = document.querySelector("#playerHand");
+    for (let i = 0; i < who.hand.length; i++) {
+        const card = who.hand[i];
+        const listItem = document.createElement("li");
+        listItem.textContent = card.name + " of " + card.suits;
+        whoHand.appendChild(listItem);
+    }
+}
+
+const displayDealerHand = (who) => {
+    const whoHand = document.querySelector("#dealerHand");
+    for (let i = 0; i < who.hand.length; i++) {
+        const card = who.hand[i];
+        const listItem = document.createElement("li");
+        listItem.textContent = card.name + " of " + card.suits;
+        whoHand.appendChild(listItem);
+    }
+}
+
+const hide = (target) => {
+    let hideTarget = document.querySelector(target);
+    hideTarget.classList = "hide"
+}
+
+/// gamestart button logic
+
 startGame = () => {
+    hide("#startGameButton")
     buildDeck();
     shuffleDeck();
     dealNewHand(player);
+    displayPlayerHand(player);
     dealNewHand(dealer);
+    displayDealerHand(dealer);
 }
+
+////TODO: display new logic on screen
+//////hands
 
 ////TODO: create player logic

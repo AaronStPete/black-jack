@@ -7,14 +7,25 @@
     <link rel="stylesheet" href="./screen.css">
   </head>
   <body>
-    <button onclick="startGame()">Start the Game</button>
+    <button onclick="startGame()" id="startGameButton">Start the Game</button>
     <h1>Let's Play BlackJack</h1>
-    <Section class="player1NameField">
+    <!-- <Section class="player1NameField">
       <h1 id="playerName">Player Name</h1>
-      <input id="playerNameField" type="text"><button id="playerNameButton" type="button" onclick="createPlayer1()">Submit</button>
-    </Section>
-    <section class="player1Hand">
-
+      
+      <input id="playerNameField" type="text" onkeypress="return createPlayer1()">
+      <button id="playerNameButton" type="button" onclick="createPlayer1()">Submit</button>
+    </Section> -->
+    <section class="player">
+      <section id="playerName"><h1>Player</h1></section>
+      <section>
+        <ul id="playerHand"></ul>
+      </section>
+    </section>
+    <section class="dealer">
+      <section><h1>Dealer</h1></section>
+      <section>
+        <ul id="dealerHand"></ul>
+      </section>
     </section>
     <script src="./main.js" charset="utf-8"></script>
   </body>
