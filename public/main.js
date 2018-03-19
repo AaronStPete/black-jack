@@ -1,7 +1,9 @@
 // variable storage:
 const player1 = {
   name: "",
-  hand: []
+  hand: [],
+  handScore: 0,
+  gameScore: 0
 }
 
 let cardDeck = [];
@@ -101,12 +103,19 @@ const draw = () => {
   const nextCard = getRandomCard(availableCards.length);
   // console.log("nextCard is:" + nextCard)
   player1.hand.push(availableCards[nextCard]);
-  console.log("This is player1.hand")
-  console.log(player1.hand)
-  console.log("This is the availableDeck:")
+  // console.log("This is player1.hand")
+  // console.log(player1.hand)
+  // console.log("This is the availableDeck:")
   availableCards.splice(nextCard, 1);
-  console.log("This is availableDeck")
-  console.log(availableCards)
+  // console.log("This is availableDeck")
+  // console.log(availableCards)
+  //// this next line adds the drawn card's value to the player1.
+  //// having trouble adding the card's score into the player1.handScore
+  console.log(player1.handScore);
+  console.log("adding to player1.handscore");
+  player1.handScore += (availableCards[nextCard]).lastIndexOf("");
+  //// this is returning a -1
+  console.log(player1.handScore);
 }
 
 ///add function for displaying player1.hand to DOM
@@ -121,6 +130,13 @@ const dealNewHand = () => {
 //////////////////INCOMPLETE LOGIC/////////////
 
 // need to findScore()
+// const player1TotalScore = () => {
+//   player1.hand.reverse
+//   console.log(player1.hand)
+//   ///totalScore - (find.(player.hand             ))
+//   ///math().length
+// }
+
 
 //stay or hit? break these up into seperate functions? 
 //doing this with buttons
@@ -146,6 +162,7 @@ const dealNewHand = () => {
   //   this.hand = []
   //   //player score (low)
   // }
-
+  
 //new game reset button
-//newGame()
+///newGame()
+//// player1.score = 0;
